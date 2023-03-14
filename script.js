@@ -1,38 +1,41 @@
-// function to generate a random number of customers for a given range
+'use strict';
+// andom number of customers for a given range
 function randomCustomers(minCookiesPerCustomer, maxCookiesPerCustomer) {
     return Math.floor(Math.random() * (maxCookiesPerCustomer - minCookiesPerCustomer +1) + minCookiesPerCustomer);
   }
   
-  // function to calculate the number of cookies sold per hour for a given store location
+  //  number of cookies sold per hour for a given store location
   function cookiesPerHour(storeLocation) {
     let cookiesPerHourArray = [];
-    // There is a 14 hour work day 
-    for (let i = 0; i < 14; i++) {
+    // There is a 14 hour work day
+    for (let i = 6; i < 20; i++) {
       // generate a random number of customers for this hour
       let numCustomers = randomCustomers(storeLocation.minCookiesPerCustomer, storeLocation.maxCookiesPerCustomer);
   
-      // calculate the number of cookies sold per customer for this location
+      // number of cookies sold per customer for this location
       let cookiesPerCustomer = storeLocation.averageCookiesPerCustomer;
-      // calculate the total number of cookies sold for this hour
+      // total number of cookies sold for this hour
       let cookiesPerHour = Math.round(numCustomers * cookiesPerCustomer);
+      // The AM PM format
+      let hour = i % 12 || 12;
+      let timeOfDay = i < 12 ? "AM" : "PM";
       // add the number of cookies sold to the array for this location
-      cookiesPerHourArray.push(cookiesPerHour);
-      // print the number of cookies sold for this hour to the console
-      console.log(cookiesPerHour);
+      cookiesPerHourArray.push(`${hour}${timeOfDay}: ${cookiesPerHour} cookies`);
     }
     // return the array of cookies sold per hour for this location
     return cookiesPerHourArray;
   }
+  
   
   // create an object for the Seattle store location
   const seattle = {
     minCookiesPerCustomer: "23",
     maxCookiesPerCustomer: "65",
     averageCookiesPerCustomer: "6.3",
-    cookiesPerHour: [], // initialize an empty array to store the cookies sold per hour
+    cookiesPerHour: [], 
   };
   
-  // call the cookiesPerHour function for the Seattle store location and store the result in the cookiesPerHour property
+  // cookiesPerHour function for the Seattle store location and store the result in the cookiesPerHour property
   seattle.cookiesPerHour = cookiesPerHour(seattle);
   
   // print the Seattle object to the console
