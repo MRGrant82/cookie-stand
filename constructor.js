@@ -16,7 +16,7 @@ function Store(minCookiesPerCustomer, maxCookiesPerCustomer, averageCookiesPerCu
     // Initialize the total number of cookies sold
     let totalCookies = 0;
   
-    // Iterate through the cookiesPerHour array and sum up the number of cookies sold using forEach loop
+    // Iterate through the cookiesPerHour array and sum up the number of cookies sold using forEach loop that I learned
     this.cookiesPerHour.forEach(hourlyData => {
       const cookiesSold = parseInt(hourlyData.split(':')[1].trim().split(' ')[0]);
       totalCookies += cookiesSold;
@@ -105,7 +105,7 @@ const table = `<table style="border-collapse: collapse; border-spacing: 0; width
 document.getElementById('table').innerHTML = table;
 
 
-// Update the HTML content for each Store object
+// Update the HTML content for each Store object 
 stores.forEach(store => {
   // Find the HTML element with the corresponding store name
   const element = document.getElementById(store.name);
