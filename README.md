@@ -1,1 +1,5 @@
-# cookie-stand
+This code creates a table and displays the hourly and daily cookie sales data for five stores using JavaScript. It first defines a constructor function for a Store object with properties for minimum and maximum cookies sold per customer, average cookies sold per customer, and the store name. It then defines a function to calculate the total number of cookies sold for a given store location, and another function to calculate the number of cookies sold per hour for a given store location.
+
+The code then creates an array of five Store objects with different properties. It uses forEach to create a table body with hourly and daily cookie sales data for each store, and calculates the hourly totals for all stores. It then combines the table header, body, and footer rows to create the table and inserts it into the HTML document.
+
+Finally, the code updates the HTML content for each Store object with its hourly cookie sales data and total cookies sold for the day. A README.md file would likely provide an overview of the code, instructions on how to run it, and any dependencies or prerequisites needed.
