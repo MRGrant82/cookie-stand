@@ -90,7 +90,7 @@ let dubaiElement = document.getElementById('dubai');
 dubaiElement.innerHTML = "<h2>Dubai</h2>" + "<ul>" + dubai.cookiesPerHour.map(hour => "<li>" + hour + "</li>").join("") + "</ul>";
 
 let parisElement = document.getElementById('paris');
-parisElement.innerHTML = "<h2>Element</h2>" + "<ul>" + paris.cookiesPerHour.map(hour => "<li>" + hour + "</li>").join("") + "</ul>";
+parisElement.innerHTML = "<h2>Paris</h2>" + "<ul>" + paris.cookiesPerHour.map(hour => "<li>" + hour + "</li>").join("") + "</ul>";
 
 let limaElement = document.getElementById('lima');
 limaElement.innerHTML = "<h2>Lima</h2>" + "<ul>" + lima.cookiesPerHour.map(hour => "<li>" + hour + "</li>").join("") + "</ul>";
