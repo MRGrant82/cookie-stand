@@ -11,7 +11,7 @@ function Store(minCookiesPerCustomer, maxCookiesPerCustomer, averageCookiesPerCu
     this.totalCookies = this.calculateTotalCookies();
   }
   
-  // Function that calculates the total number of cookies sold for a given store location
+  // Calculates the total number of cookies sold for a given store location
   Store.prototype.calculateTotalCookies = function() {
     // Initialize the total number of cookies sold
     let totalCookies = 0;
@@ -28,7 +28,7 @@ function Store(minCookiesPerCustomer, maxCookiesPerCustomer, averageCookiesPerCu
   
   // Function that generates a random number of customers for a given range
   function randomCustomers(min, max) {
-    // Returns a random integer between min (inclusive) and max (inclusive)
+    // Returns a random integer between min and max
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
   
@@ -67,7 +67,6 @@ function Store(minCookiesPerCustomer, maxCookiesPerCustomer, averageCookiesPerCu
  // Create the table header row with column labels
  const tableHeader = "<tr><th>City</th><th>6AM</th><th>7AM</th><th>8AM</th><th>9AM</th><th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th><th>6PM</th><th>7PM</th><th>Daily<br>Total</th></tr>";
 
-// Create the table body rows
 // Create the table body rows using forEach
 const tableBody = [];
 stores.forEach(store => {
@@ -86,9 +85,10 @@ stores.forEach(store => {
     // Add a cell with the number of cookies sold to the row
     row += `<td class="cookies-sold">${cookiesSold}</td>`;
   });
-  row += `<td class="total-cookies">${totalCookies}</td></tr>`;
+  row += `<td class="total-cookies bold">${totalCookies}</td></tr>`;
   tableBody.push(row);
 });
+
 // Create the table footer row with hourly totals
 const tableFooter = "<tr><td><strong>Hourly Totals</strong></td>" + 
                     [...Array(14).keys()].map(hour => {
