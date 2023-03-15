@@ -64,67 +64,49 @@ for (let i = 0; i < stores.length; i++) {
   totalCookiesAllStores += stores[i].totalCookies;
 }
 
-// Create the table header row with column labels
-const tableHeader = "<tr><th>City</th><th>6AM</th><th>7AM</th><th>8AM</th><th>9AM</th><th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th><th>6PM</th><th>7PM</th><th>Daily<br>Total</th></tr>";
+function renderTable() {
+  // Create the table header row with column labels
+  const tableHeader = "<tr><th>City</th><th>6AM</th><th>7AM</th><th>8AM</th><th>9AM</th><th>10AM</th><th>11AM</th><th>12PM</th><th>1PM</th><th>2PM</th><th>3PM</th><th>4PM</th><th>5PM</th><th>6PM</th><th>7PM</th><th>Daily<br>Total</th></tr>";
 
-// Create the table body rows using forEach
-const tableBody = [];
-stores.forEach(store => {
-  // Get the cookiesPerHour array for this store
-  const cookiesPerHour = store.cookiesPerHour;
-  // Initialize the total number of cookies sold for this store
-  let totalCookies = 0;
-  // Create a row for this store
-  let row = "<tr>";
-  row += `<td class="store-name">${store.name}</td>`;
-  cookiesPerHour.forEach(hour => {
-    // Extract the number of cookies sold from the hour string
-    const cookiesSold = parseInt(hour.split(':')[1].trim().split(' ')[0]);
-    // Add the number of cookies sold to the total for this store
-    totalCookies += cookiesSold;
-    // Add a cell with the number of cookies sold to the row
-    row += `<td class="cookies-sold">${cookiesSold}</td>`;
+  // Create the table body rows using forEach
+  const tableBody = [];
+  stores.forEach(store => {
+    // Get the cookiesPerHour array for this store
+    const cookiesPerHour = store.cookiesPerHour;
+    // Initialize the total number of cookies sold for this store
+    let totalCookies = 0;
+    // Create a row for this store
+    let row = "<tr>";
+    row += `<td class="store-name">${store.name}</td>`;
+    cookiesPerHour.forEach(hour => {
+      // Extract the number of cookies sold from the hour string
+      const cookiesSold = parseInt(hour.split(':')[1].trim().split(' ')[0]);
+      // Add the number of cookies sold to the total for this store
+      totalCookies += cookiesSold;
+      // Add a cell with the number of cookies sold to the row
+      row += `<td class="cookies-sold">${cookiesSold}</td>`;
+    });
+    row += `<td class="total-cookies bold">${totalCookies}</td></tr>`;
+    tableBody.push(row);
   });
-  row += `<td class="total-cookies bold">${totalCookies}</td></tr>`;
-  tableBody.push(row);
-});
 
-let hourlyTotals = [];
-totalCookiesAllStores = 0;
+  // Create the table footer row with hourly and daily totals
+  const hourlyTotals = new Array(14).fill(0);
+  stores.forEach(store => {
+    store.cookiesPerHour.forEach((hour, i) => {
+      const cookiesSold = parseInt(hour.split(':')[1].trim().split(' ')[0]);
+      hourlyTotals[i] += cookiesSold;
+    });
+  });
+  const totalCookiesAllStores = stores.reduce((total, store) => total + store.totalCookies, 0);
+  const tableFooter = "<tr><td><strong>Hourly Totals</strong></td>" + 
+                      hourlyTotals.map(total => `<td><strong>${total}</strong></td>`).join('') + 
+                      `<td><strong>${totalCookiesAllStores}</strong></td></tr>`;
 
-// Iterate over the hours
-for (let hour = 0; hour < 14; hour++) {
-  let hourTotal = 0;
+  // Create the table by combining the header, body, and footer rows
+  const table = `<table style="border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid #ddd;">${tableHeader}${tableBody.join('')}${tableFooter}</table>`;
 
-  // Iterate over the stores
-  for (let i = 0; i < stores.length; i++) {
-    const cookiesSold = parseInt(stores[i].cookiesPerHour[hour].split(':')[1].trim().split(' ')[0]);
-    hourTotal += cookiesSold;
-    totalCookiesAllStores += cookiesSold;
-  }
-
-  hourlyTotals.push(hourTotal);
+  // Insert the table into the HTML document
+  document.getElementById('table').innerHTML = table;
 }
-
-
-// Create the table footer row with hourly and daily totals
-const tableFooter = "<tr><td><strong>Hourly Totals</strong></td>" + 
-                    hourlyTotals.map(total => `<td><strong>${total}</strong></td>`).join('') + 
-                    `<td><strong>${totalCookiesAllStores}</strong></td></tr>`;
-
-
-// Create the table by combining the header, body, and footer rows
-const table = `<table style="border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid #ddd;">${tableHeader}${tableBody.join('')}${tableFooter}</table>`;
-
-// Insert the table into the HTML document
-document.getElementById('table').innerHTML = table;
-
-// Update the HTML content for each Store object
-stores.forEach(store => {
-  // Find the HTML element with the corresponding store name
-  const element = document.getElementById(store.name);
-  if (element) { // Check if element is not null
-    // Update the HTML content with the hourly cookie sales data and total cookies sold for this store
-    element.innerHTML = `<h2>${store.name}</h2><ul>${store.cookiesPerHour.map(hour => `<li>${hour}</li>`).join('')}<li><strong>Total Cookies Sold:</strong> ${store.totalCookies}</li></ul>`;
-  }
-});
+renderTable();
