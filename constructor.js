@@ -122,11 +122,11 @@ function renderDailyTable() {
   // Create the table body rows using forEach
   const tableBody = [];
   stores.forEach(store => {
-    // Get the totalCookies for this store
+    // Get the total number of cookies sold for this store
     const totalCookies = store.totalCookies;
-    // Calculate the revenue for this store
+    // Calculate the revenue for this location
     const revenue = totalCookies * 7.5;
-    // Create a row for this store
+    // Create a row for this location
     const row = `<tr><td>${store.name}</td><td>${totalCookies}</td><td>${revenue.toFixed(2)}</td></tr>`;
     tableBody.push(row);
   });
@@ -137,7 +137,8 @@ function renderDailyTable() {
   // Insert the table into the HTML document
   document.getElementById('daily-sales-data').innerHTML = table;
 }
-
 renderTable();
 renderDailyTable();
+
+
 });
