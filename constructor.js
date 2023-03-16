@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', function() {
+ 
+
 // Constructor function for a Store object
 function Store(minCookiesPerCustomer, maxCookiesPerCustomer, averageCookiesPerCustomer, name) {
   // Properties for a Store object
@@ -58,6 +61,9 @@ function cookiesPerHour(store) {
 // Create an array of Store objects
 const stores = [  new Store(23, 65, 6.3, 'Seattle'),  new Store(3, 24, 1.2, 'Tokyo'),  new Store(11, 38, 3.7, 'Dubai'),  new Store(20, 38, 2.3, 'Paris'),  new Store(2, 16, 4.6, 'Lima')];
 
+// Initialize the hourly totals array to all zeros
+const hourlyTotals = new Array(14).fill(0);
+
 // Calculate the total cookies sold for all stores
 let totalCookiesAllStores = 0;
 for (let i = 0; i < stores.length; i++) {
@@ -91,7 +97,6 @@ function renderTable() {
   });
 
   // Create the table footer row with hourly and daily totals
-  const hourlyTotals = new Array(14).fill(0);
   stores.forEach(store => {
     store.cookiesPerHour.forEach((hour, i) => {
       const cookiesSold = parseInt(hour.split(':')[1].trim().split(' ')[0]);
@@ -109,4 +114,30 @@ function renderTable() {
   // Insert the table into the HTML document
   document.getElementById('table').innerHTML = table;
 }
+
+function renderDailyTable() {
+  // Create the table header row with column labels
+  const tableHeader = "<tr><th>Location</th><th>Daily Cookies Sold</th><th>Revenue</th></tr>";
+
+  // Create the table body rows using forEach
+  const tableBody = [];
+  stores.forEach(store => {
+    // Get the totalCookies for this store
+    const totalCookies = store.totalCookies;
+    // Calculate the revenue for this store
+    const revenue = totalCookies * 7.5;
+    // Create a row for this store
+    const row = `<tr><td>${store.name}</td><td>${totalCookies}</td><td>${revenue.toFixed(2)}</td></tr>`;
+    tableBody.push(row);
+  });
+
+  // Create the table by combining the header and body rows
+  const table = `<table style="border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid #ddd;">${tableHeader}${tableBody.join('')}</table>`;
+
+  // Insert the table into the HTML document
+  document.getElementById('daily-sales-data').innerHTML = table;
+}
+
 renderTable();
+renderDailyTable();
+});

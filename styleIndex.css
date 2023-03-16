@@ -1,109 +1,119 @@
 body {
     background-image: url('img/water.png'), url('img/water.png');
     background-repeat: repeat-y;
-    background-size: contain;
+    background-size: cover;
+    background-position: left, right;
     animation: flow 10s linear infinite;
     margin: 10vh;
-    background-position: left, right;
   }
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif !important;
-    background-color: lightblue;
-}
-
-h2 {
-    font-size: 2rem;
-    text-decoration: underline;
-}
-
-#patDisplay {
-    background-color: transparent;
-    font-size: 2.5rem;
-}
-
-p {
-    font-family: 'Georgia', 'Times';
-    background-color: aliceblue;
-    margin-top: 20px;
-}
-
-section {
-    background-color: darkturquoise;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-main {
-    background-color: wheat;
-}
-
-header {
+  
+  header {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
-}
-
-img.cookie {
-    height: 50% !important;
-    width: 50% !important;
-    
   }
-
-
-header img {
+  
+  #leftSalmon,
+  #rightSalmon {
     height: 5rem;
-    margin-right: 1rem;
-}
-
-#rightSalmon {
-   
-  transform: scaleX(-1);
-  margin-left: 1rem;
-  height: 5rem;
-}
-
-.product-info-container {
+  }
+  
+  #rightSalmon {
+    transform: scaleX(-1);
+    margin-left: 1rem;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Merriweather', serif !important;
+    background-color: lightblue;
+  }
+  
+  #patDisplay {
+    background-color: transparent;
+    font-size: 2.5rem;
+  }
+  
+  main {
+    background-color: wheat;
+  }
+  
+  section {
+    background-color: darkturquoise;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    text-decoration: underline;
+  }
+  
+  p {
+    font-family: 'Georgia', 'Times';
+    background-color: aliceblue;
+    margin-top: 20px;
+  }
+  
+  .product-info-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-
- 
-.left-cookie {
-    margin-right: 1rem;
-   
-}
-
-.right-cookie {
-    margin-left: 1rem;
- 
-}
   
-.text-container {
+  .left-cookie {
+    margin-right: 1rem;
+  }
+  
+  .right-cookie {
+    margin-left: 1rem;
+  }
+  
+  .product-description {
+    flex-grow: 1;
+  }
+  
+  .text-container {
     margin-top: 1rem;
   }
   
-.product-description {
-    flex-grow: 1;
-  }
-
-
-ul {
+  ul {
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-li {
+  }
+  
+  li {
     margin-bottom: 0.5rem;
-}
-
-footer {
+  }
+  
+  img.cookie {
+    height: 50% !important;
+    width: 50% !important;
+  }
+  
+  footer {
     background-color: lightgray;
     padding: 1rem;
     text-align: center;
+  }
+  
+#sales-data {
+    max-height: 250px;
+    padding-bottom: 50px;
+}
+
+#hourly-sales-data {
+    max-height: 250px;
+    overflow: scroll;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
 }
