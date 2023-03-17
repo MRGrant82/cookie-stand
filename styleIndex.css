@@ -98,21 +98,47 @@ body {
     
 }
 
-.family img {
-  display: flex;
+#business-description {
+  display: inline-block;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  max-width: auto;
+  max-height: 50%;
+  justify-content: space-between;
+}
+
+#business-description img {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem; */
+  margin: 10px;
+  height: 10%;
+  width: 10%;
+  justify-content: space-between;
+}
+
+/* .family {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   max-width:fit-content;
   max-height: fit-content;
   height: 10%;
   width: 10%;
+  justify-content: space-between;
 
-}
+} */
+
   .form-group label,
   .form-group input {
     width: 45%;
     box-sizing: border-box;
     margin-right: 1rem;
+    
   }
   
   .form-group label:last-child,
@@ -125,6 +151,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   
   .left-cookie {
@@ -167,6 +194,7 @@ body {
 #sales-data {
     max-height: 250px;
     padding-bottom: 50px;
+    
 }
 
 #hourly-sales-data {
@@ -177,8 +205,15 @@ body {
     flex-direction: column;
     justify-content: center;
     font-weight: bold;
+    
 }
 
 #hourly-sales-data p {
     margin-bottom: 100px;
+}
+
+fieldset {
+  border: 3px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
