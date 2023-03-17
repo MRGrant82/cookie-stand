@@ -137,7 +137,7 @@
     renderTable();
     renderDailyTable();
     // Add event listener to form submit button
-document.getElementById('new-store-form').addEventListener('submit', function(event) {
+    document.getElementById('new-store-form').addEventListener('submit', function(event) {
     event.preventDefault();
     // Get input values from form
     const location = document.getElementById('location').value;
@@ -153,8 +153,8 @@ document.getElementById('new-store-form').addEventListener('submit', function(ev
   });
   
   // Render table and daily table on page load
-  renderTable();
-  renderDailyTable();
+//   renderTable();
+//   renderDailyTable();
     
     
     
