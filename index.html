@@ -20,7 +20,8 @@
         <img id="rightSalmon" src="img/salmon.png" alt="Salmon image">
     </header>
     <main>
-        <section id="locations">
+        <section id="information">
+            <section id="locations">
             <h2>Locations</h2>
             <ul>
                 <li>Seattle</li>
@@ -29,17 +30,39 @@
                 <li>Paris</li>
                 <li>Lima</li>
             </ul>
-        </section>
-        <section id="hours">
+            </section>
+            <section id="hours">
             <h2>Hours</h2>
             <p>Monday - Sunday: 6:00am - 8:00pm</p>
-        </section>
-        <section id="contact">
+            </section>
+            <section id="contact">
             <h2>Contact Information</h2>
             <p>1234 Main St. Seattle, WA 98101<br>
             Phone: (123) 456-7890<br>
             Email: info@cookiemonster.com</p>
+            </section>
         </section>
+        <form id="new-store-form">
+            <fieldset>
+              <legend>Interested in franchising? Fill out the form below!</legend>
+          
+              <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location">
+                <label for="min-cookies">Minimum Cookies per Hour:</label>
+                <input type="number" id="min-cookies" name="min-cookies" min="0" step="1">
+              </div>
+          
+              <div class="form-group">
+                <label for="max-cookies">Maximum Cookies per Hour:</label>
+                <input type="number" id="max-cookies" name="max-cookies" min="0" step="1">
+                <label for="avg-cookies">Average Cookies per Hour:</label>
+                <input type="number" id="avg-cookies" name="avg-cookies" min="0" step="0.1">
+              </div>
+          
+              <button type="submit">Add Store</button>
+            </fieldset>
+          </form>
         <section id="product-info">
             <h2>Product Information</h2>
             <div class="product-info-container">
@@ -55,12 +78,13 @@
             </div>
           </section>
         <section id="business-description">
+            <img src="img/family.jpg" class="family">
             <h2>Business Description</h2>
-            <p>Pat’s Salmon Cookies is a locally-owned and operated cookie shop that has been serving the community for over 100 years!<br> 
+            <p>Pat’s Salmon Cookies is a locally-owned and family operated cookie shop that has been serving the community for over 100 years!<br> 
                 We take pride in using high-quality ingredients and baking all of our cookies on-site. Come visit us today and see<br> 
                 why our customers keep coming back! Hint: It's the sugar!</p>
         </section>
-        <section id="sales-data">
+        <section id="daily-sales-data">
             <a href="sales.html"><h2>Sales Data</h2></a>
             <p>Check out our hourly sales data below:</p>
             <div id="hourly-sales-data">
@@ -73,6 +97,6 @@
         </section>
     
     <footer>&copy; 2023 Michael Grant, Cookie Monsters, LLC</footer>
-    <script src="constructor.js"></script>
+    <script src="form.js"></script>
     </body>
     </html>  
