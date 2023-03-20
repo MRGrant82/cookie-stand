@@ -112,30 +112,9 @@
       document.getElementById('table').innerHTML = table;
     }
     
-    function renderDailyTable() {
-      // Create the table header row with column labels
-      const tableHeader = "<tr><th>Location</th><th>Daily Cookies Sold</th><th>Revenue</th></tr>";
-    
-      // Create the table body rows using forEach
-      const tableBody = [];
-      stores.forEach(store => {
-        // Get the total number of cookies sold for this store
-        const totalCookies = store.totalCookies;
-        // Calculate the revenue for this location
-        const revenue = totalCookies * 7.5;
-        // Create a row for this location
-        const row = `<tr><td>${store.name}</td><td>${totalCookies}</td><td>${revenue.toFixed(2)}</td></tr>`;
-        tableBody.push(row);
-      });
-    
-      // Create the table by combining the header and body rows
-      const table = `<table style="border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid #ddd;">${tableHeader}${tableBody.join('')}</table>`;
-    
-      // Insert the table into the HTML document
-      document.getElementById('daily-sales-data').innerHTML = table;
-    }
+   
     renderTable();
-    renderDailyTable();
+    
     // Add event listener to form submit button
     document.getElementById('new-store-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -149,12 +128,9 @@
     // Push new Store object to stores array
     stores.push(newStore);
     // Update daily table with new store data
-    renderDailyTable();
+    renderTable();
   });
+  renderTable();
   
-  // Render table and daily table on page load
-//   renderTable();
-//   renderDailyTable();
-    
-    
+
     
