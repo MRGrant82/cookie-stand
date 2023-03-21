@@ -115,8 +115,8 @@
    
     renderTable();
     
-    // Add event listener to form submit button
-    document.getElementById('new-store-form').addEventListener('submit', function(event) {
+   // Add event listener to form submit button
+   document.getElementById('new-store-form').addEventListener('submit', function(event) {
     event.preventDefault();
     // Get input values from form
     const location = document.getElementById('location').value;
@@ -127,10 +127,11 @@
     const newStore = new Store(minCookies, maxCookies, avgCookies, location);
     // Push new Store object to stores array
     stores.push(newStore);
+    // Reset hourlyTotals to all zeros
+    hourlyTotals.fill(0);
     // Update daily table with new store data
     renderTable();
   });
-  renderTable();
   
 
     
